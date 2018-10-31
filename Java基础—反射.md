@@ -48,7 +48,7 @@ Java反射就是在运行状态中，对于任意一个类，都能够知道这�
 1. 对于每个类而言，JRE 都为其保留一个不变的 Class 类型的对象。一个 Class 对象包含了特定某个类的有关信息。
 2. Class 对象只能由系统建立对象，一个类（而不是一个对象）在 JVM 中只会有一个Class实例
 
-
+定义一个Person类
 ```java
     public class Person {
         String name;
