@@ -49,8 +49,6 @@ Java反射就是在运行状态中，对于任意一个类，都能够知道这�
 2. Class 对象只能由系统建立对象，一个类（而不是一个对象）在 JVM 中只会有一个Class实例
 
 
-
-
 ```java
     public class Person {
         String name;
