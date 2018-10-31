@@ -12,7 +12,7 @@ Java反射就是在运行状态中，对于任意一个类，都能够知道这�
 
 1. Class是一个类：
 
-    ```java
+```java
     public final class Class<T> implements java.io.Serializable,
                               GenericDeclaration,
                               Type,
