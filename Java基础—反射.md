@@ -12,7 +12,7 @@ Java反射就是在运行状态中，对于任意一个类，都能够知道这�
 
 1. Class是一个类：
 
-```java
+    ```java
     public final class Class<T> implements java.io.Serializable,
                               GenericDeclaration,
                               Type,
@@ -42,7 +42,9 @@ Java反射就是在运行状态中，对于任意一个类，都能够知道这�
 ```
 
 1. Class这个类封装了什么信息？
+    
     **Class是一个类，封装了当前对象所对应的类的信息**
+　　 
 　　 一个类中有属性，方法，构造器等，比如说有一个Person类，一个Order类，一个Book类，这些都是不同的类，现在需要一个类，用来描述类，这就是Class，它应该有类名，属性，方法，构造器等。Class是用来描述类的类
 　　 Class类是一个对象照镜子的结果，对象可以看到自己有哪些属性，方法，构造器，实现了哪些接口等等
 1. 对于每个类而言，JRE 都为其保留一个不变的 Class 类型的对象。一个 Class 对象包含了特定某个类的有关信息。
