@@ -150,15 +150,15 @@ public class ReflectionTest {
 
 查阅 API 可以看到 Class 有很多方法：
 
-　　getName()：获得类的完整名字。
-　　getFields()：获得类的public类型的属性。
-　　getDeclaredFields()：获得类的所有属性。包括private 声明的和继承类
-　　getMethods()：获得类的public类型的方法。
-　　getDeclaredMethods()：获得类的所有方法。包括private 声明的和继承类
-　　getMethod(String name, Class[] parameterTypes)：获得类的特定方法，name参数指定方法的名字，parameterTypes 参数指定方法的参数类型。
-　　getConstructors()：获得类的public类型的构造方法。
-　　getConstructor(Class[] parameterTypes)：获得类的特定构造方法，parameterTypes 参数指定构造方法的参数类型。
-　　newInstance()：通过类的不带参数的构造方法创建这个类的一个对象。
+* getName()：获得类的完整名字。
+* getFields()：获得类的public类型的属性。
+* getDeclaredFields()：获得类的所有属性。包括private 声明的和继承类
+* getMethods()：获得类的public类型的方法。
+* getDeclaredMethods()：获得类的所有方法。包括private 声明的和继承类
+* getMethod(String name, Class[] parameterTypes)：获得类的特定方法，name参数指定方法的名字，parameterTypes 参数指定方法的参数类型。
+* getConstructors()：获得类的public类型的构造方法。
+* getConstructor(Class[] parameterTypes)：获得类的特定构造方法，parameterTypes 参数指定构造方法的参数类型。
+* newInstance()：通过类的不带参数的构造方法创建这个类的一个对象。
 　　
 　　
 ```java　　    
@@ -225,7 +225,7 @@ public class ReflectionTest {
 
         //获取构造方法
         Constructor[] constructors = clazz.getConstructors();
-        for (Constructor constructor : constructors) {
+*         for (Constructor constructor : constructors) {
             System.out.println("constructor:" + constructor.toString());
         }
     }
