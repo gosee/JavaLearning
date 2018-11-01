@@ -146,3 +146,89 @@ public class ReflectionTest {
     }
 }
 ```
+
+
+查阅 API 可以看到 Class 有很多方法：
+
+　　getName()：获得类的完整名字。
+　　getFields()：获得类的public类型的属性。
+　　getDeclaredFields()：获得类的所有属性。包括private 声明的和继承类
+　　getMethods()：获得类的public类型的方法。
+　　getDeclaredMethods()：获得类的所有方法。包括private 声明的和继承类
+　　getMethod(String name, Class[] parameterTypes)：获得类的特定方法，name参数指定方法的名字，parameterTypes 参数指定方法的参数类型。
+　　getConstructors()：获得类的public类型的构造方法。
+　　getConstructor(Class[] parameterTypes)：获得类的特定构造方法，parameterTypes 参数指定构造方法的参数类型。
+　　newInstance()：通过类的不带参数的构造方法创建这个类的一个对象。
+　　
+　　
+```java　　    
+　　  public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchFieldException {
+        Class clazz = null;
+        //1.得到Class对象
+        clazz = Person.class;
+        //2.通过对象名
+        //这种方式是用在传进来一个对象，却不知道对象类型的时候使用
+        Person person = new Person();
+        clazz = person.getClass();
+        //上面这个例子的意义不大，因为已经知道person类型是Person类，再这样写就没有必要了
+        //如果传进来是一个Object类，这种做法就是应该的
+        Object obj = new Person();
+        clazz = obj.getClass();
+        //3.通过全类名(会抛出异常)
+        //一般框架开发中这种用的比较多，因为配置文件中一般配的都是全类名，通过这种方式可以得到Class实例
+        String className = "com.jiupai.study.biz.reflect.Person";
+        clazz = Class.forName(className);
+
+        //获得类完整的名字
+        className = clazz.getName();
+        System.out.println("class name : " + className);
+
+        //获得类的public类型的属性。
+        Field[] fields = clazz.getFields();
+        for (Field field : fields) {
+            System.out.println("public field name : " + field.getName());
+        }
+
+        //获得类的所有属性。包括私有的
+        Field[] allFields = clazz.getDeclaredFields();
+        for (Field field : allFields) {
+            System.out.println("all field name : " + field.getName());
+        }
+
+        //获得类的public类型的方法。这里包括 Object 类的一些方法
+        Method[] methods = clazz.getMethods();
+        for (Method method : methods) {
+            System.out.println("public method name : " + method.getName());
+        }
+
+        //获得类的所有方法。
+        Method[] allMethods = clazz.getDeclaredMethods();
+        for (Method method : allMethods) {
+            System.out.println("all method name : " + method.getName());
+        }
+
+        //获得指定的属性
+        Field f1 = clazz.getField("name");
+        System.out.println("field [name] : " + f1);
+        //获得指定的私有属性
+        Field f2 = clazz.getDeclaredField("age");
+        //启用和禁用访问安全检查的开关，值为 true，则表示反射的对象在使用时应该取消 java 语言的访问检查；反之不取消
+        f2.setAccessible(true);
+        System.out.println("field [age] : " + f2);
+
+        //创建这个类的一个对象
+        Object p2 = clazz.newInstance();
+        //将 p2 对象的  f2 属性赋值为 Bob，f2 属性即为 私有属性 name
+        f2.set(p2, 18);
+        //使用反射机制可以打破封装性，导致了java对象的属性不安全。
+        System.out.println("field.get(object): " + f2.get(p2));
+
+        //获取构造方法
+        Constructor[] constructors = clazz.getConstructors();
+        for (Constructor constructor : constructors) {
+            System.out.println("constructor:" + constructor.toString());
+        }
+    }
+```
+执行结果
+![](https://github.com/gosee/photo/blob/master/20181101153600.png)
