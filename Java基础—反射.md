@@ -160,7 +160,7 @@ public class ReflectionTest {
 * newInstance()：通过类的不带参数的构造方法创建这个类的一个对象。
 　　
 
-    ```java　　     
+    ```java
     public static void main(String[] args) {
         Class clazz = null;
 
