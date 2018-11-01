@@ -160,7 +160,7 @@ public class ReflectionTest {
 * newInstance()：通过类的不带参数的构造方法创建这个类的一个对象。
 　　
 
-```java　　     
+    ```java　　     
     public static void main(String[] args) {
         Class clazz = null;
 
@@ -260,7 +260,7 @@ public class ReflectionTest {
             System.out.println("constructor:" + constructor.toString());
         }
     }
-```
+    ```
 
 执行结果
 ![](https://github.com/gosee/photo/blob/master/20181101153600.png)
