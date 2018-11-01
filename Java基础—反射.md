@@ -224,7 +224,7 @@ public class ReflectionTest {
 
         //获取构造方法
         Constructor[] constructors = clazz.getConstructors();
-*         for (Constructor constructor : constructors) {
+         for (Constructor constructor : constructors) {
             System.out.println("constructor:" + constructor.toString());
         }
     }
