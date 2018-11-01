@@ -160,10 +160,10 @@ public class ReflectionTest {
 * newInstance()：通过类的不带参数的构造方法创建这个类的一个对象。
 　　
 
-```java　　    
-public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchFieldException {　　
-
+```java　　     
+    public static void main(String[] args) {
         Class clazz = null;
+
         //1.得到Class对象
         clazz = Person.class;
         //2.通过对象名
@@ -174,11 +174,17 @@ public static void main(String[] args) throws ClassNotFoundException, IllegalAcc
         //如果传进来是一个Object类，这种做法就是应该的
         Object obj = new Person();
         clazz = obj.getClass();
+
+
         //3.通过全类名(会抛出异常)
         //一般框架开发中这种用的比较多，因为配置文件中一般配的都是全类名，通过这种方式可以得到Class实例
         String className = "com.jiupai.study.biz.reflect.Person";
-        clazz = Class.forName(className);
-        
+        try {
+            clazz = Class.forName(className);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
         //获得类完整的名字
         className = clazz.getName();
         System.out.println("class name : " + className);
@@ -208,24 +214,49 @@ public static void main(String[] args) throws ClassNotFoundException, IllegalAcc
         }
 
         //获得指定的属性
-        Field f1 = clazz.getField("name");
+        Field f1 = null;
+        try {
+            f1 = clazz.getField("name");
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
         System.out.println("field [name] : " + f1);
         //获得指定的私有属性
-        Field f2 = clazz.getDeclaredField("age");
+        Field f2 = null;
+        try {
+            f2 = clazz.getDeclaredField("age");
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
         //启用和禁用访问安全检查的开关，值为 true，则表示反射的对象在使用时应该取消 java 语言的访问检查；反之不取消
         f2.setAccessible(true);
         System.out.println("field [age] : " + f2);
 
         //创建这个类的一个对象
-        Object p2 = clazz.newInstance();
+        Object p2 = null;
+        try {
+            p2 = clazz.newInstance();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
         //将 p2 对象的  f2 属性赋值为 Bob，f2 属性即为 私有属性 name
-        f2.set(p2, 18);
+        try {
+            f2.set(p2, 18);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
         //使用反射机制可以打破封装性，导致了java对象的属性不安全。
-        System.out.println("field.get(object): " + f2.get(p2));
+        try {
+            System.out.println("field.get(object): " + f2.get(p2));
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
 
         //获取构造方法
         Constructor[] constructors = clazz.getConstructors();
-         for (Constructor constructor : constructors) {
+        for (Constructor constructor : constructors) {
             System.out.println("constructor:" + constructor.toString());
         }
     }
