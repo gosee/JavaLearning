@@ -159,7 +159,7 @@ public class ReflectionTest {
 * getConstructor(Class[] parameterTypes)：获得类的特定构造方法，parameterTypes 参数指定构造方法的参数类型。
 * newInstance()：通过类的不带参数的构造方法创建这个类的一个对象。
 　　
-    ```java　　    
+```java　　    
 　　public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchFieldException {　　
 
         Class clazz = null;
@@ -229,5 +229,6 @@ public class ReflectionTest {
         }
     }
 ```
+
 执行结果
 ![](https://github.com/gosee/photo/blob/master/20181101153600.png)
