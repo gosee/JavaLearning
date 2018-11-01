@@ -147,7 +147,6 @@ public class ReflectionTest {
 }
 ```
 
-
 查阅 API 可以看到 Class 有很多方法：
 
 * getName()：获得类的完整名字。
@@ -160,9 +159,9 @@ public class ReflectionTest {
 * getConstructor(Class[] parameterTypes)：获得类的特定构造方法，parameterTypes 参数指定构造方法的参数类型。
 * newInstance()：通过类的不带参数的构造方法创建这个类的一个对象。
 　　
-　　
-```java　　    
-　　  public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchFieldException {
+    ```java　　    
+　　public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchFieldException {　　
+
         Class clazz = null;
         //1.得到Class对象
         clazz = Person.class;
@@ -178,7 +177,7 @@ public class ReflectionTest {
         //一般框架开发中这种用的比较多，因为配置文件中一般配的都是全类名，通过这种方式可以得到Class实例
         String className = "com.jiupai.study.biz.reflect.Person";
         clazz = Class.forName(className);
-
+        
         //获得类完整的名字
         className = clazz.getName();
         System.out.println("class name : " + className);
